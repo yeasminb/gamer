@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="text.css" />
+<link rel="stylesheet" type="text/css" media="all" href="960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+<link href="galleria.css" rel="stylesheet" type="text/css" media="screen"> 
+
+<script type="text/javascript" src="jquery-1.2.6.min.js"></script> 
+<script type="text/javascript" src="jquery.galleria.js"></script> 
+<script type="text/javascript"> 
+jQuery(function($) { 
+
+$('ul.gallery').galleria({
+			history   : true, // activates the history object for bookmarking, back-button etc.
+			clickNext : true, // helper for making the image clickable
+			insert    : '#main_image', // the containing selector for our main image
+			onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+				
+				// fade in the image & caption
+				if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) { // FF/Win fades large images terribly slow
+					image.css('display','none').fadeIn(1000);
+				}
+				caption.css('display','none').fadeIn(600);
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// fade out inactive thumbnail
+				_li.siblings().children('img.selected').fadeTo(500,0.3);
+				
+				// fade in active thumbnail
+				thumb.fadeTo('fast',1).addClass('selected');
+				
+				// add a title for the clickable image
+				image.attr('title','Next image >>');
+			},
+			onThumb : function(thumb) { // thumbnail effects goes here
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// if thumbnail is active, fade all the way.
+				var _fadeTo = _li.is('.active') ? '1' : '0.3';
+				
+				// fade in the thumbnail when finnished loading
+				thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1000);
+				
+				// hover effects
+				thumb.hover(
+					function() { thumb.fadeTo('fast',1); },
+					function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+				)
+			}
+		});
+
+
+
+
+
+
+}); 
+</script>
+
+<style media="screen,projection" type="text/css">
+	
+	/* BEGIN DEMO STYLE */
+
+	.gallery li{width:80px;height:60px;border:3px double #111;margin: 0 2px;background:#000; float:left;}
+	.gallery {width:300px;}
+
+    </style>
+
+
+
+
+<title>Yeasmin Badhon</title>
+</head>
+
+<body>
+
+
+<div class="container_12" id="topContent">
+    <div class="grid_4">
+            <h1>Yeasmin Badhon</h1>
+            <h2>My Gallery</h2>
+    </div>
+    <div class="grid_8" id="rightTopContent">
+            <a href="https://www.facebook.com/yeasmin.badhon.9" target="_blank">Facebook</a> |
+            <a href="https://www.youtube.com/channel/UCbcrWLUmjaJb-u0kJ2SlGKA" target="_blank">Youtube</a> 
+            
+    </div>
+</div>
+
+
+    <div class="clear">&nbsp;</div>
+
+<div class="container_12">
+<div class="grid_4">    
+        <ul class="gallery"> 
+			<li class="active"><img src="cov1.jpg" title="ME" alt="1"></li> 
+            <li><img src="cov2.jpg" title="friends" alt="2"></li> 
+            <li><img src="cov4.jpg" title="friends" alt="3"></li> 
+            <li><img src="cov5.jpg" title="friends" alt="4"></li> 
+            <li><img src="cov6.jpg" title="ME" alt="5"></li> 
+            <li><img src="cov7.jpg" title="ME" alt="6"></li> 
+            <li><img src="cov9.jpg" title="ME" alt="7"></li> 
+            <li><img src="cov10.jpg" title="ME" alt="8"></li> 
+            <li><img src="cov11.jpg" title="ME" alt="9"></li> 
+            <li><img src="cov12.jpg" title="Family <3" alt="10"></li> 
+            <li><img src="cov13.jpg" title="meh" alt="11"></li> 
+            <li><img src="cov14.jpg" title="Sharee" alt="12"></li> 
+		</ul>
+        
+	</div>
+	<!-- end .grid_4 -->
+	<div class="grid_8">
+
+			<div id="main_image"></div>
+	</div>
+    </div>
+    <div class="clear">&nbsp;</div>
+    <div class="container_16">
+    <div class="grid_2">
+		<p>&nbsp;</p>
+	</div>
+    
+      <div class="grid_12" id="galleryInformation">
+		<h2>About Me</h2>
+        <p>
+		Many times, the decisions we make affect and hurt your closest friends and family the most. I have a lot of regrets in that regard. But God has forgiven me, which I am very thankful for. It has enabled me to forgive myself and move forward one day at a time
+	
+     </p>
+      <p> 
+
+There are lots of people I admire and respect, but I don't necessarily want to be like them. I'm too happy being myself. </p>  
+     
+       
+       
+       <div id="footer"><a href="https://www.google.com" target="_blank">powered by google </a></div>
+	</div>
+    
+        <div class="grid_2">
+		<p>&nbsp;</p>
+	</div>
+    </div>
+    
+</div>
+
+</body>
+</html>
